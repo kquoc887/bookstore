@@ -64,3 +64,34 @@ Route::group(['prefix'=>'admin','middleware' => 'adminLogin'],function() {
 		Route::post('edit/{id}', ['as'=> 'admin.user.postEdit','uses'=> 'UserController@postEdit']);
 	});
 });
+
+
+/*
+ * Paths of Page Client:
+ */
+Route::group(['prefix' => 'client'], function() {
+	Route::get('/', ['as' => 'client.home', 'uses' => 'ClientController@home']);
+	Route::get('detail/{id}', ['as' => 'client.detail', 'uses' => 'ClientController@getDetail']);
+	Route::get('book-cate/{id}', ['as' => 'client.book_category', 'uses' => 'ClientController@getBookCate']);
+	
+	Route::group(['prefix'=>'ajax'], function() {
+		Route::get('quickview', ['as' => 'client.ajax.quickView', 'uses' => 'AjaxController@postQuickView']);
+
+		Route::get('update-Cart/{row_id}/{qty}', ['as' => 'client.ajax.updateCart', 'uses' => 'AjaxController@updateCart']);
+		Route::get('getListCart', ['as' => 'client.ajax.getListCart', 'uses' => 'AjaxController@getListCart']);
+		Route::get('addCartItem', ['as' => 'client.ajax.addCart', 'uses' => 'AjaxController@addCartItem']);
+
+	});
+
+	Route::group(['prefix'=>'purchase'], function() {
+		Route::get('cart', ['as' => 'client.purchase.getCart', 'uses' => 'CartController@getCart']);
+
+		Route::get('buy-product/{id}/{nameproduct}', ['as' => 'client.purchase.buyProduct', 'uses' => 'CartController@buyProduct']);
+
+		Route::get('delete-cart-id/{row_id}', ['as' => 'client.purchase.deleteItem', 'uses' => 'CartController@deleteItem']);
+	});
+});
+
+Route::get('about', function() {
+	return 'about';
+});
