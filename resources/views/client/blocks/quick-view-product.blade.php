@@ -25,7 +25,6 @@
 				<div class="block-btn">
 					<input type="hidden" class="book-id">
 					<a class="btn btn-primary cart-add" id="btn-card">Thêm vào giỏ hàng</a>
-					<a class="btn btn-link buy-quick" id="buy-quick">Mua nhanh</a>
 				</div>
 			</div>
 		</div>

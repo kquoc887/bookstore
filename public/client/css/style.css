@@ -612,8 +612,16 @@ span.step_title_left {
     color: #73b4e5;
 }
 
-.step_one  {
-    margin-bottom: 250px;
+.step_two_active {
+    margin-top: 0px;
+}
+
+.step_two  {
+    margin-top: 250px;
+}
+
+.info_user_active {
+    display: block !important;
 }
 span.checkout_type_title {
     display: block;

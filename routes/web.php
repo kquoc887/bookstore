@@ -104,9 +104,7 @@ Route::group(['prefix' => 'client'], function() {
 
 		Route::get('delete-cart-id/{row_id}', ['as' => 'client.purchase.deleteItem', 'uses' => 'CartController@deleteItem']);
 
-		Route::get('checkout' ,function() {
-			return view('client.pages.checkout');
-		});
+		Route::get('checkout' , ['as' => 'client.purchase.checkout', 'uses' => 'CartController@getCheckout']);
 	});
 });
 

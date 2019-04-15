@@ -58,6 +58,9 @@
 						echo Cart::subtotal(0,'.','.');
 					?>			
 				</td>
+				<td>
+					<a class="btn btn-primary" href="{{route('client.purchase.checkout')}}">Thanh toán</a>
+				</td>
 			</tr>
 		</table>
 	</div>

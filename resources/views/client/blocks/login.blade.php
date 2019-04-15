@@ -7,7 +7,7 @@
 	</div>
 	<div class="dialog-login-block">
 		<div class="login-popup container ">
-			<form action="{{route('client.login')}}" method="POST" name="client-login">
+			<form action="{{route('client.login')}}" method="POST" name="client-login" id="form-login-ajax">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<div class="form-group">
 					<label for="Username">Username:</label>

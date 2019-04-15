@@ -28,5 +28,9 @@ class CartController extends Controller
     	return redirect()->route('client.purchase.getCart');
     }
 
+    public function getCheckout() {
+        $content = Cart::content();
+        return view('client.pages.checkout', compact('content'));
+    }
     
 }

@@ -207,6 +207,7 @@ $(document).ready(function() {
 	$('#register').click(function() {
 		$('.step_one_login').css('display', 'none');
 		$('.step_one_register').css('display', 'block');
+		$('.step_two').css('margin-top', '20px');
 	})
 
 	$('#checkout_guest').click(function(event) {
@@ -214,6 +215,7 @@ $(document).ready(function() {
 		$('.step_one').css('margin-bottom', '5px');
 		$('.step_one .step_title_left').addClass('glyphicon glyphicon-ok').html('');
 		$('.step_title_active').removeClass('step_title_active');
+		$('.step_two').css('margin-top', '0px');
 		$('.step_two .step_title').addClass('step_title_active');
 		$('.info_user').css('display', 'block');
 	});
@@ -251,8 +253,8 @@ $(document).ready(function() {
 				if (data.username != '' && data.password != '' || (data.username != '' && data.password == '') || (data.username == '' && data.password != '')) {
 					$(form_group[0]).append('<p class="text-danger">'+ data.username +'</p>');
 					$(form_group[1]).append('<p class="text-danger">'+ data.password +'</p>');	
-				} else {
-					$('form[name=client-login]').submit();
+				} else if(data.username == '' && data.password == '') {
+					$('#form-login-ajax').submit();
 				}
 				
 				// console.log(data);
