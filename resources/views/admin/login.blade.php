@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="{{asset('public/admin/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('public/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('public/admin/css/style.css')}}">
 </head>
 <body>

@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Title Page</title>
 		<link rel="stylesheet" href="{{asset('public/admin/css/style.css')}}">
-		<link rel="stylesheet" href="{{asset('public/admin/css/bootstrap.min.css')}}">
-		<script src="{{asset('public/admin/js/jquery-3.3.1.min.js')}}"></script>
-		<script src="{{asset('public/admin/js/bootstrap.min.js')}}"></script>
+		<link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
+		<script src="{{asset('public/js/jquery-3.3.1.min.js')}}"></script>
+		<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
 		<script src="{{asset('public/ckfinder/ckfinder.js')}}"></script>
 	</head>

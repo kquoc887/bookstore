@@ -35,17 +35,20 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.one_product').hover(function() {
-		$(this).find('a.cart-add').css('display', 'block');
+	$(document).on('mouseover', '.one_product', function(event) {
+			$(this).find('a.cart-add').css('display', 'block');
 		$(this).find('.watch-fast').css('opacity', '1');
-	}, function() {
-		$(this).find('a.cart-add').css('display', 'none');
+	});
+
+	$(document).on('mouseout', '.one_product', function(event) {
+			$(this).find('a.cart-add').css('display', 'none');
 		$(this).find('.watch-fast').css('opacity', '0');
 	});
 
+
 	$("a.cart").hover(function() {
 		$.ajax({
-			url:'client/ajax/getListCart',
+			url:'http://localhost/project_bookstore/client/ajax/getListCart',
 			type: 'get',
 			cache:false,
 			dataType:'json',
@@ -183,5 +186,99 @@ $(document).ready(function() {
 		$(this).find('.menu-child').css('display', 'block');
 	}, function() {
 		$(this).find('.menu-child').css('display', 'none');
+	});
+
+	var count = 1;
+	$('input[name=checkout_type]').change(function () {
+		
+		if (count == 1) {
+			$('div.checkout_button').css('display', 'none');
+			$('div.cm_noscript').css('display', 'block');
+			count ++;
+		}
+		else {
+			$('div.checkout_button').css('display', 'block');
+			$('div.cm_noscript').css('display', 'none');
+			count --;
+		}
+	}); 
+
+	$('#register').click(function() {
+		$('.step_one_login').css('display', 'none');
+		$('.step_one_register').css('display', 'block');
+	})
+
+	$('#checkout_guest').click(function(event) {
+		$('.step_one_login').css('display', 'none');
+		$('.step_one').css('margin-bottom', '5px');
+		$('.step_one .step_title_left').addClass('glyphicon glyphicon-ok').html('');
+		$('.step_title_active').removeClass('step_title_active');
+		$('.step_two .step_title').addClass('step_title_active');
+		$('.info_user').css('display', 'block');
+	});
+
+	$('#login').click(function(event) {
+		$('.dialog-login').css('display', 'block');
+		$('.den').css({
+			opacity: '1',
+			visibility: 'visible'
+		});
+	});
+
+	$('.den, #dialog_close').click(function(event) {
+		$('.dialog-login').css('display', 'none');
+		$('.den').css({
+			opacity: '0',
+			visibility: 'hidden'
+		});
+	});
+
+	$('a#btn-login').click(function(event) {
+		var form_group = $('form[name=client-login').find('.form-group');
+		$(form_group[0]).find('p').remove();
+		$(form_group[1]).find('p').remove();
+		var username = $('input[name=username]').val();
+		var password = $('input[name=password]').val();
+		$.ajax({
+			url: 'http://localhost/project_bookstore/client/ajax/login-ajax' ,
+			type: 'GET',
+			cache: false,
+			dataType: 'json',
+			data: {'us': username, 'pass': password},
+			success: function(data, status) {
+				console.log(data);
+				if (data.username != '' && data.password != '' || (data.username != '' && data.password == '') || (data.username == '' && data.password != '')) {
+					$(form_group[0]).append('<p class="text-danger">'+ data.username +'</p>');
+					$(form_group[1]).append('<p class="text-danger">'+ data.password +'</p>');	
+				} else {
+					$('form[name=client-login]').submit();
+				}
+				
+				// console.log(data);
+			}
+		});
+	});
+
+	$('input[name=category]').change(function(event) {
+		var category_id = $(this).val();
+		console.log(category_id);
+		$.ajax({
+			url: 'http://localhost/project_bookstore/client/ajax/ajax-book' ,
+			type: 'GET',
+			cache: false,
+			dataType: 'json',
+			data: {'cate_id': category_id},
+			success: function(data, status) {
+				$('.dmuc_right').children().remove();
+				for (var i = 0; i< data.length; i++) {
+					var xhtml = '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">'
+					xhtml +='<div class="one_product"><div class="pro-action"><a class="cart-add" href="">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a></div>';
+					xhtml += '<img class="img-responsive" src="http://localhost/project_bookstore/public/admin/upload/images-book/' + data[i].image + '">';
+					xhtml += '<div class="pro-detail"><h3 class="pro-name"><a href="http://localhost/project_bookstore/client/detail/' + data[i].id +'">'+data[i].name+'</a></h3>';
+					xhtml += '<div class="pro-price"><p><span>' + data[i].price + '</span></p><input type="hidden" class="book-id" value="'+data[i].id+'"><button class="btn btn-primary watch-fast" >Xem nhanh</button></div></div></div></div>';
+					$('.dmuc_right').append(xhtml);
+				}
+			}
+		});
 	});
 });

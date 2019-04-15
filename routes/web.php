@@ -19,10 +19,12 @@ Route::get('home', function() {
 	return view('admin.master');
 });
 
-Route::get('login', ['as' => 'admin.getLogin', 'uses' => 'Auth\LoginController@getLogin']);
-Route::post('login', ['as' => 'admin.postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 
-Route::get('logout', ['as' => 'admin.getLogout', 'uses' => 'Auth\LoginController@getLogout']);
+Route::get('admin/login', ['as' => 'admin.getLogin', 'uses' => 'UserController@getLogin']);
+Route::post('admin/login', ['as' => 'admin.postLogin', 'uses' => 'UserController@postLogin']);
+
+Route::get('admin/logout', ['as' => 'admin.getLogout', 'uses' => 'UserController@getLogout']);
+
 
 /*
  * Paths of Page Admin:
@@ -71,16 +73,28 @@ Route::group(['prefix'=>'admin','middleware' => 'adminLogin'],function() {
  */
 Route::group(['prefix' => 'client'], function() {
 	Route::get('/', ['as' => 'client.home', 'uses' => 'ClientController@home']);
+	Route::get('product_all', ['as'=> 'client.product_all', 'uses' => 'ClientController@getProductAll']);
+	Route::get('client/introduce', ['as' => 'client.introduce', 'uses' => 'ClientController@getIntroduce']);
+
 	Route::get('detail/{id}', ['as' => 'client.detail', 'uses' => 'ClientController@getDetail']);
+
 	Route::get('book-cate/{id}', ['as' => 'client.book_category', 'uses' => 'ClientController@getBookCate']);
 	
+	Route::get('register', ['as' => 'client.getRegister', 'uses' => 'ClientController@getResgister']);
+
+	Route::post('register', ['as' => 'client.postRegister', 'uses' => 'ClientController@postResgister']);
+
+	Route::post('login', ['as' => 'client.login', 'uses' => 'ClientController@postLogin']);
+
+	Route::get('logout', ['as' => 'client.logout' , 'uses' => 'ClientController@getLogout']);
+
 	Route::group(['prefix'=>'ajax'], function() {
 		Route::get('quickview', ['as' => 'client.ajax.quickView', 'uses' => 'AjaxController@postQuickView']);
-
 		Route::get('update-Cart/{row_id}/{qty}', ['as' => 'client.ajax.updateCart', 'uses' => 'AjaxController@updateCart']);
 		Route::get('getListCart', ['as' => 'client.ajax.getListCart', 'uses' => 'AjaxController@getListCart']);
 		Route::get('addCartItem', ['as' => 'client.ajax.addCart', 'uses' => 'AjaxController@addCartItem']);
-
+		Route::get('login-ajax', ['as' => 'client.ajax.login', 'uses' => 'AjaxController@login']);
+		Route::get('ajax-book', ['as' => 'client.ajax.ajax_book', 'uses' => 'AjaxController@getAjaxBook']);
 	});
 
 	Route::group(['prefix'=>'purchase'], function() {
@@ -89,6 +103,10 @@ Route::group(['prefix' => 'client'], function() {
 		Route::get('buy-product/{id}/{nameproduct}', ['as' => 'client.purchase.buyProduct', 'uses' => 'CartController@buyProduct']);
 
 		Route::get('delete-cart-id/{row_id}', ['as' => 'client.purchase.deleteItem', 'uses' => 'CartController@deleteItem']);
+
+		Route::get('checkout' ,function() {
+			return view('client.pages.checkout');
+		});
 	});
 });
 

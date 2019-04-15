@@ -16,15 +16,24 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Trang chủ</a></li>
-				<li><a href="#">Sản phẩm</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Giới thiệu</a></li>
+				<li><a class="btn btn-link" href="{{route('client.home')}}">Trang chủ</a></li>
+				<li><a class="btn btn-link" href="{{route('client.product_all')}}">Sản phẩm</a></li>
+				<li><a class="btn btn-link" href="{{route('client.introduce')}}">Giới thiệu</a></li>
 				@if (Auth::check())
-					<li>Thông tin người dùng</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<b class="glyphicon glyphicon-user">&nbsp</b>
+							{{Auth::user()->username}}
+						<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{{route('client.logout')}}">Logout<b class="glyphicon glyphicon-log-out pull-right"></b></a>
+							</li>
+						</ul>
+					</li>
 				@else
-					<li><a href="#">Đăng ký</a></li>
-					<li><a href="#">Đăng nhập</a></li>
+					<li><a class="btn btn-link" href="{{route('client.getRegister')}}">Đăng ký</a></li>
+					<li><a class="btn btn-link" id="login">Đăng nhập</a></li>
 				@endif
 				<li>
 					<a class="cart btn btn-link">

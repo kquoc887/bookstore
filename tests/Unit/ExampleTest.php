@@ -14,6 +14,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+    	$respone = $this->get('/about');
+    	// dd($respone);
+        $respone->assertSee('about');
     }
+
+
 }

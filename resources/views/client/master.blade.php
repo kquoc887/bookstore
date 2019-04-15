@@ -27,6 +27,8 @@
 	@yield('content-client')
 	@include('client.blocks.quick-view-product')
 	@include('client.blocks.preload')
+	@include('client.blocks.login')
+	@include('client.blocks.footer')
 	<script src="{{asset('public/client/js/action.js')}}"></script>
 </body>
 </html>

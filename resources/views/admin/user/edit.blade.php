@@ -20,6 +20,7 @@
 		    	<label  for="product_name">Email:</label>
 		    	<input type="email" class="form-control"  name="txtEmail" placeholder="Please Enter Email"  value="{{ old('txtEmail', isset($user) ? $user->email : null) }}">
 		  	</div>
+		  	@if (Auth::user()->id != $user->id)
 		  	<div class="form-group">
 		    	<label  for="cate_name">User Level:</label>
 		    	<label class="radio-inline"><input type="radio" name="rdoLevel" value="1" 
@@ -33,6 +34,7 @@
 					@endif
 		    	>Member</label>
 		  	</div>
+		  	@endif
 		  	<button type="submit" class="btn btn-default">Add</button>
 		  	<button type="reset" class="btn btn-default">Reset</button>
 		</form>

@@ -67,4 +67,21 @@
 		}
 	}
 
+	function createMenu() {
+		$menu_level1 = DB::table('categories')->where('parent_id', 0)->get();
+		foreach ($menu_level1 as $key => $value) {
+			echo '<li>' . $value->name . '</li>';
+		}
+		// if (count($data) > 0) {
+		// 	$newString .= '<li>';
+		// 	foreach ($data as $key => $value) {
+		// 		if($value['parent_id'] == $parent_id) {
+		// 			$newString     .= $value['name'] .'</li>';
+		// 			unset($data[$key]);
+		// 			$newParent      = $value['id'];
+		// 			createMenu($data, $newParent, $newString);
+		// 		}
+		// 	}
+		// }	
+	}
 ?>
