@@ -1,0 +1,7 @@
+﻿Vào trang: localhost/project_bookstore/admin/login
+Có 3 loại 2 admin là admin thường và Supper Admin.
+Supper admin thì có quyền xóa các admin khác.
+Supper admin 12345
+Admin thường: admin1 12345
+
+Vào trang: localhost/project_bookstore/client để xem giao diện của client
