@@ -7,15 +7,26 @@ use App\category;
 use App\book;
 use App\supplier;
 use App\User;
+use App\oderdetail;
 use Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
     public function home() {
+        $oderdetail = oderdetail::all();
+        $book = book::all();
+        $book_outstanding = array();
+        foreach ($oderdetail as $key => $od) {
+            foreach ($book as $key => $b) {
+                if ($b->id == $od->book_id) {
+                   $book_outstanding[] = $b;
+                }
+            }
+        }
     	$books = book::all();
     	$books_new = book::select('id', 'name', 'price', 'image', 'description', 'alias')->orderBy('id', 'DESC')->get();
-    	return view('client.pages.home', compact('books','books_new'));
+    	return view('client.pages.home', compact('books','books_new', 'book_outstanding'));
     }
 
     public function getIntroduce() {
@@ -52,9 +63,9 @@ class ClientController extends Controller
 
     public function postResgister(Request $request) {
         $user = new User();
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->username = $request->username_res;
+        $user->email = $request->email_res;
+        $user->password = Hash::make($request->password_res);
         $user->level = 0;
         $user->remember_token = $request->_token;
         $user->save();

@@ -89,7 +89,8 @@
 									<span class="step_title_txt">Địa chỉ</span>
 							</h3>
 							<div class="@if (Auth::check()) info_user info_user_active @else info_user @endif">
-								<form action="" method="POST">
+								<form action="{{route('client.email.order')}}" method="POST">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
 									<div class="form-group">
 									    <label for="name">Họ và Tên:</label>
 									    <input type="text" class="form-control" name="name">
@@ -106,6 +107,7 @@
 									    <label for="address">Địa chỉ:</label>
 									    <input type="text" class="form-control" name="address">
 									</div>
+									<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 									  <button type="submit" class="btn btn-primary" id="take_an_order">Đặt hàng</button>
 								</form>
 							</div>

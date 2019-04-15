@@ -106,6 +106,10 @@ Route::group(['prefix' => 'client'], function() {
 
 		Route::get('checkout' , ['as' => 'client.purchase.checkout', 'uses' => 'CartController@getCheckout']);
 	});
+
+	Route::group(['prefix' => 'email'], function() {
+		Route::post('order', ['as' => 'client.email.order', 'uses' => 'EmailController@postOrder']);
+	});
 });
 
 Route::get('about', function() {

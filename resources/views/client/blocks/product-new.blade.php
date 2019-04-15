@@ -6,7 +6,7 @@
 				<div class="item">
 					<div class="one_product">
 						<div class="pro-action">
-							<a class="cart-add">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a>
+							<a class="cart-add" href="">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a>
 						</div>
 						<img src="{{asset('public/admin/upload/images-book/' . $item->image)}}" alt="image1">
 						<div class="pro-detail">

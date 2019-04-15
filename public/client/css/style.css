@@ -210,6 +210,7 @@ h3.pro-name a:hover {
     color: #00000087;
     font-weight: 200;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .pro-action a.cart-add {
