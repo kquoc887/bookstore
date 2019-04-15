@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+#btn-card {
+    display: inline-block !important;
+}
+
 .dmuc_right {
     padding-top: 20px;
 }

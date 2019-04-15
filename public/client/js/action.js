@@ -104,6 +104,7 @@ $(document).ready(function() {
 				$('div.quickview div.book-info .book-description').html(  data.description);
 				$('div.quickview div.book-info .book-price').text('Giá: ' + data.price);
 				$('div.quickview div.book-info .book-author').text('Tác giả: ' + data.author);
+				$('div.quickview div.block-btn .book-id').attr('value', data.id);
 			},
 			complete: function(jqXHR, textStatus) {
 				$('div.quickview').addClass('show-quickview');

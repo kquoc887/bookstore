@@ -9,7 +9,7 @@
 			<img class="img-responsive" src="" alt="quick view">
 		</div>
 		<div class="col-xs-8 col-sm-9 col-md-9">
-			<div class="book-info">
+			<div class="book-info one_product">
 				<h3 class="book-name"></h3>
 				<p class="book-description"></p>
 				<p class="book-price"></p>
@@ -23,7 +23,8 @@
 					</div>
 				</div>
 				<div class="block-btn">
-					<button class="btn btn-primary" id="btn-card">Thêm vào giỏ hàng</button>
+					<input type="hidden" class="book-id">
+					<a class="btn btn-primary cart-add" id="btn-card">Thêm vào giỏ hàng</a>
 					<a class="btn btn-link buy-quick" id="buy-quick">Mua nhanh</a>
 				</div>
 			</div>
