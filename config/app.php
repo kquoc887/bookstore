@@ -162,7 +162,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Laravel\Dusk\DuskServiceProvider::class,
         /*
          * Package Service Providers...
          */
