@@ -20,7 +20,7 @@ class TestClickLogin extends DuskTestCase
                     ->click('nav > div > div.collapse.navbar-collapse.navbar-ex1-collapse > ul > li:nth-child(5) > a')
                     ->type('username', 'client4')
                     ->type('password', 123456)
-                    ->click('#btn-login')
+                    ->click('a#btn-login')
                     ->assertSee('Username:')
                     ->assertPathIs('/project_bookstore/client');
         });
