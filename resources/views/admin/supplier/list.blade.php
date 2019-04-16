@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('panel-header', 'List Category')
+@section('panel-header', 'List Supplier')
 @section('content')
 <p>Type something in the input field to search the table for first names, last names or emails:</p>
 <input class="form-control" id="searchTable" type="text" placeholder="Search...">

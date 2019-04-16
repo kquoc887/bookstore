@@ -189,20 +189,20 @@ $(document).ready(function() {
 		$(this).find('.menu-child').css('display', 'none');
 	});
 
-	var count = 1;
-	$('input[name=checkout_type]').change(function () {
+	// var count = 1;
+	// $('input[name=checkout_type]').change(function () {
 		
-		if (count == 1) {
-			$('div.checkout_button').css('display', 'none');
-			$('div.cm_noscript').css('display', 'block');
-			count ++;
-		}
-		else {
-			$('div.checkout_button').css('display', 'block');
-			$('div.cm_noscript').css('display', 'none');
-			count --;
-		}
-	}); 
+	// 	if (count == 1) {
+	// 		$('div.checkout_button').css('display', 'none');
+	// 		$('div.cm_noscript').css('display', 'block');
+	// 		count ++;
+	// 	}
+	// 	else {
+	// 		$('div.checkout_button').css('display', 'block');
+	// 		$('div.cm_noscript').css('display', 'none');
+	// 		count --;
+	// 	}
+	// }); 
 
 	$('#register').click(function() {
 		$('.step_one_login').css('display', 'none');

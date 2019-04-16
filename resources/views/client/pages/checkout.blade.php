@@ -20,7 +20,8 @@
 								<div class="step_one_login">
 									<div class="col-md-5">
 										<h3>Đăng nhập bằng tài khoản đã tạo</h3>
-										<form action="" name>
+										<form action="{{route('client.purchase.loginCheckout')}}" method="POST">
+											<input type="hidden" name="_token" value="{{csrf_token()}}">
 											<div class="form-group">
 											    <label for="Username">Username:</label>
 											    <input type="text" class="form-control" name="username_checkout">
@@ -36,48 +37,39 @@
 										<h3>Dành cho khách hàng chưa có tài khoản</h3>
 										<ul class="list-group list-unstyled">
 											<li class="checkout-method-item">
-												<input class="checkout_method_radio"  type="radio" id="checkout_type_register" name="checkout_type" checked="checked">
+												<input class="checkout_method_radio"  type="radio" id="checkout_type_register" name="checkout_type" >
 												<label for="checkout_type">
 													<span class="checkout_type_title">Đăng ký</span>
 													<span class="checkout_type_hint">Tạo tài khoản mới để mua hàng và thanh toán</span>
 												</label>
 											</li>
-											<li class="checkout-method-item">
-												<input class="checkout_method_radio" type="radio" id="checkout_type_guest" name="checkout_type">
-												<label for="checkout_type">
-													<span class="checkout_type_title">Thanh toán không cần tài khoản</span>
-													<span class="checkout_type_hint">Tạo tài khoản mới để mua hàng và thanh toán</span>
-												</label>
-											</li>
+											
 										</ul>
 										<div class="checkout_button">
 											<a class="btn btn-primary" id="register" >Đăng ký</a>		
-										</div>
-										<div class="cm_noscript">
-											<a class="btn btn-primary" id="checkout_guest">Thanh toán không cần tài khoản</a>
 										</div>
 									</div>
 								</div>
 							@endif
 							<div class="step_one_register">
-								<form action="" method="POST">
+								<form action="{{route('client.purchase.registerCheckout')}}" method="POST">
 									<input type="hidden" name="_token" value={{csrf_token()}}>
 									<h3>Đăng ký tài khoản mới</h3>
 									<div class="form-group">
 								    	<label for="Username">Username:</label>
-								    	<input type="text" class="form-control" name="username_resgister">
+								    	<input type="text" class="form-control" name="username_res">
 								  	</div>
 									<div class="form-group">
 									    <label for="email">email:</label>
-									    <input type="email" class="form-control" name="email"> 
+									    <input type="email" class="form-control" name="email_res"> 
 									</div>
 									<div class="form-group">
 										<label for="password">password:</label>
-										<input type="password" class="form-control" name="password_register">
+										<input type="password" class="form-control" name="password_res">
 									</div>
 									<div class="form-group">
 										<label for="Repasswrod">Password again:</label>
-										<input type="password" class="form-control" name="Repasswrod">
+										<input type="password" class="form-control" name="Repassword_res">
 									</div>
 									 <button type="submit" class="btn btn-primary">Đăng ký</button>
 								</form>
@@ -107,7 +99,7 @@
 									    <label for="address">Địa chỉ:</label>
 									    <input type="text" class="form-control" name="address">
 									</div>
-									<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+									<input type="hidden" name="user_id" value="@if(Auth::check()) {{Auth::user()->id}} @else {{''}} @endif">
 									  <button type="submit" class="btn btn-primary" id="take_an_order">Đặt hàng</button>
 								</form>
 							</div>

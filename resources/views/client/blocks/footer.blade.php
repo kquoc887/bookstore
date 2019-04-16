@@ -3,18 +3,16 @@
 		<div class="col-md-3">
 			<h3 class="footer-title">Liên kết</h3>
 				<ul class="list-group list-unstyled bullet">
-					<li><a href="">Sản phẩm nổi bật</a></li>
-					<li><a href="">Tất cả sản phẩm</a></li>
+					<li><a href="{{route('client.product_all')}}">Tất cả sản phẩm</a></li>
 				</ul>
 			</h3>
 		</div>
 		<div class="col-md-3">
 			<h3 class="footer-title">Hỗ trợ</h3>
 				<ul class="list-group list-unstyled bullet">
-					<li><a href="">Trang chủ</a></li>
-					<li><a href="">Sản Phẩm</a></li>
-					<li><a href="">Blog</a></li>
-					<li><a href="">Giới thiệu</a></li>
+					<li><a href="{{route('client.home')}}">Trang chủ</a></li>
+					<li><a href="{{route('client.product_all')}}">Sản Phẩm</a></li>
+					<li><a href="{{route('client.introduce')}}">Giới thiệu</a></li>
 				</ul>
 			</h3>
 		</div>

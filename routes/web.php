@@ -43,7 +43,7 @@ Route::group(['prefix'=>'admin','middleware' => 'adminLogin'],function() {
 		Route::get('list', ['as' => 'admin.supplier.list','uses'=> 'SupplierController@getList']);
 		Route::get('add', ['as'	=> 'admin.supplier.getAdd','uses'=> 'SupplierController@getAdd']);
 		Route::post('add', ['as'=> 'admin.supplier.postAdd','uses'=> 'SupplierController@postAdd']);
-		Route::get('delete/{id}', ['as' => 'admin.supplier.getDelete','uses'=> 'CategoryController@getDelete']);
+		Route::get('delete/{id}', ['as' => 'admin.supplier.getDelete','uses'=> 'SupplierController@getDelete']);
 		Route::get('edit/{id}', ['as' => 'admin.supplier.getEdit','uses'=> 'SupplierController@getEdit']);
 		Route::post('edit/{id}', ['as'=> 'admin.supplier.postEdit','uses'=> 'SupplierController@postEdit']);
 	});
@@ -104,6 +104,10 @@ Route::group(['prefix' => 'client'], function() {
 
 		Route::get('delete-cart-id/{row_id}', ['as' => 'client.purchase.deleteItem', 'uses' => 'CartController@deleteItem']);
 
+		Route::post('loginCheckout', ['as' =>'client.purchase.loginCheckout', 'uses' => 'CartController@postLoginCheckout']);
+
+		Route::post('registerCheckout', ['as' => 'client.purchase.registerCheckout', 'uses' => 'CartController@postResgisterCheckout']);
+		
 		Route::get('checkout' , ['as' => 'client.purchase.checkout', 'uses' => 'CartController@getCheckout']);
 	});
 

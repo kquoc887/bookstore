@@ -84,9 +84,11 @@ class ClientController extends Controller
         }
     }
 
+    
+
     public function getLogout() {
         Auth::logout();
-        return redirect()->route('client.home');
+        return redirect()->back();
     }
 
     public function getProductAll() {
