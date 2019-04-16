@@ -57,7 +57,7 @@
 		  	<div class="form-group">
 		    	<label  for="product_description">Description Of Book:</label>
 		    	<textarea class="form-control" id="editor3" rows="5" name="txtDescription"></textarea>
-		    	<script type="text/javascript">CKEDITOR.replace('editor3');</script>
+		    	{{-- <script type="text/javascript">CKEDITOR.replace('editor3');</script> --}}
 		  	</div>
 		  	<button type="submit" class="btn btn-default">Product Add</button>
 		  	<button type="reset" class="btn btn-default">Reset</button>
