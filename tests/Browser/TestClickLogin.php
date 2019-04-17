@@ -21,7 +21,8 @@ class TestClickLogin extends DuskTestCase
                     ->type('username', 'client4')
                     ->type('password', 123456)
                     ->click('a#btn-login')
-                    ->assertSee('Username:')
+                    ->waitForText('client4')
+                    ->assertSee('client4')
                     ->assertPathIs('/project_bookstore/client');
         });
     }

@@ -16,7 +16,7 @@ class BookTest extends TestCase
      */
     public function testCreateBook()
     {
-    	$book_name = 'Hoa Vang Tren Co Xanh';
+    	$book_name = str_random(5);
     	$sup = Factory(\App\supplier::class)->create();
     	$cate = Factory(\App\category::class)->create([
     		'name' => str_random(5)
@@ -30,7 +30,7 @@ class BookTest extends TestCase
             'cate_id' => $cate->id,
             'sup_id' => $sup->id
     	]);
-        $this->assertDatabaseHas('books', ['name' => $book->name]);
+        $this->assertDatabaseHas('categories', ['name' => $book->category->name]);
     }
 
      public function testUpdateBook() {

@@ -21,8 +21,12 @@ class TestClickLogout extends DuskTestCase
                     ->type('username', 'client4')
                     ->type('password', 123456)
                     ->click('#btn-login')
-                    ->click(' nav > div > div.collapse.navbar-collapse.navbar-ex1-collapse > ul > li.dropdown.open > a')
+                    ->waitForText('client4')
+                    ->assertSee('client4')
+                    ->click(' nav > div > div.collapse.navbar-collapse.navbar-ex1-collapse > ul > li.dropdown > a')
                     ->click('nav > div > div.collapse.navbar-collapse.navbar-ex1-collapse > ul > li.dropdown.open > ul > li > a')
+                    ->waitForText('Đăng nhập')
+                    ->assertSee('Đăng nhập')
                     ->assertPathIs('/project_bookstore/client');
         });
     }
