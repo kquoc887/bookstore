@@ -2,6 +2,28 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+.count-order, .report_money {
+    /* padding-bottom: 55px; */
+    width: 10%;
+    border: 1px solid black;
+    border-radius: 10px;
+    /* height: 26%; */
+    text-align: center;
+    vertical-align: center;
+    padding: 35px 20px;
+    background-color: #eae1e1;
+}
+
+.report_money {
+	margin-left: 20px;
+	
+}
+
+.report_content {
+    display: flex;
+    flex-wrap: nowrap;
+}
 /* CSS of page Admin */
 table tr th {
 	text-align: center;

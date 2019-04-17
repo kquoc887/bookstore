@@ -30,6 +30,12 @@ Route::get('admin/logout', ['as' => 'admin.getLogout', 'uses' => 'UserController
  * Paths of Page Admin:
  */
 Route::group(['prefix'=>'admin','middleware' => 'adminLogin'],function() {
+	Route::get('report', ['as' => 'admin.order', 'uses' => 'OrderController@viewReport']);
+
+	Route::group(['prefix' => 'order'], function() {
+		Route::get('list', ['as' => 'admin.order.list', 'uses' => 'OrderController@getList']);
+	});
+
 	Route::group(['prefix'=>'cate'],function() {
 		Route::get('list', ['as' => 'admin.cate.list','uses' => 'CategoryController@getList']);
 		Route::get('add', ['as'	=> 'admin.cate.getAdd','uses' => 'CategoryController@getAdd']);

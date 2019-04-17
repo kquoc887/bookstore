@@ -27,4 +27,11 @@
 			<li><a href="{!! route('admin.user.getAdd') !!}" class="btn btn-link">Add User</a></li>
 		</ul>
 	</li>
+	<li class="list-group-item item-parent	">
+		<p class="item-parent-title">Order Detail<span class="glyphicon glyphicon-menu-down pull-right"></span></p>
+		<ul class="list-unstyled list-group item-child">
+			<li><a href="{!! route('admin.order.list') !!}" class="btn btn-link">List Order Detail</a></li>
+			
+		</ul>
+	</li>
 </ul>
