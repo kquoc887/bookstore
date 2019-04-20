@@ -15,39 +15,27 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse" id="menu-category-mobile">
 				<ul class="nav navbar-nav navbar-right">
+					<?php $cate_parent = DB::table('categories')->where('parent_id',0)->get(); ?>
+					@foreach ($cate_parent as $parent)
 					<li>
 						<a href="#">
 						<b class="glyphicon glyphicon-star"></b>
-						<span class=title-category>Sách kinh tế</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a>
+						<span class=title-category>{{$parent->name}}</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a>
 						<ul class="list-group list-unstyled item-moblie">
+							<?php $cate_child = DB::table('categories')->where('parent_id', '=', $parent->id)->get(); ?>
 							<li class="item-menu-level1">
 								<b class="glyphicon glyphicon-star"></b>
 								Danh Mục
 								<b class="glyphicon glyphicon-plus pull-right plus-item"></b>
 								<ul class="item-menu-sub list-unstyled">
-									<li class="item-menu-level2"><b class="glyphicon glyphicon-star"></b>Marketing - Bán hàng</li>
-									<li class="item-menu-level2"><b class="glyphicon glyphicon-star"></b>Ngoại Thương</li>
-									<li class="item-menu-level2"><b class="glyphicon glyphicon-star"></b>Nhân Sự & Việc Làm</li>
+									@foreach ($cate_child as $child)
+									<li class="item-menu-level2"><b class="glyphicon glyphicon-star"></b><a href="{{route('client.book_category', $child->id)}}">{{$child->name}}</a></li>
+									@endforeach
 								</ul>
 							</li>
-							<li class="item-menu-level1">
-								<b class="glyphicon glyphicon-star"></b>
-								Tác Giả
-								<b class="glyphicon glyphicon-plus pull-right plus-item"></b>
-							</li>
-							<li class="item-menu-level1">
-								<b class="glyphicon glyphicon-star"></b>
-								Nhà Phát Hành
-								<b class="glyphicon glyphicon-plus pull-right plus-item"></b>
-							</li>
-							
 						</ul>
 					</li>
-					<li><a href="#"><b class="glyphicon glyphicon-star"></b><span class=title-category>Sách thiếu nhi</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a>
-					</li>
-					<li><a href="#"><b class="glyphicon glyphicon-star"></b><span class=title-category>Sách văn học</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a></li>
-					<li><a href="#"><b class="glyphicon glyphicon-star"></b><span class=title-category>Sách đời sống</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a></li>
-					<li><a href="#"><b class="glyphicon glyphicon-star"></b><span class=title-category>Sách giáo khoa</span><b class="glyphicon glyphicon-plus pull-right plus"></b></a></li>
+					@endforeach
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>

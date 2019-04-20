@@ -655,6 +655,9 @@ div.step_one_register {
     .watch-fast {
         visibility: hidden;
     }
+    .sliderbar-moblie {
+        display: none;
+    }
 }
 
 
@@ -665,6 +668,9 @@ div.step_one_register {
     }
     .watch-fast {
         visibility: visible;
+    }
+    .sliderbar-moblie {
+        display: block;
     }
 }
 

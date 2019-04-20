@@ -4,9 +4,9 @@
 	<div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-12 col-sm-12  col-md-12">
 					@foreach ($book_cate as $item)
-						<div class="col-md-3">
+						<div class="col-xs-8  col-sm-4  col-md-3">
 							<div class="item">
 								<div class="one_product">
 									<div class="pro-action">
