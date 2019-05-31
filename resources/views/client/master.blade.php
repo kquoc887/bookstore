@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home</title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('public/client/css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('public/owlcarousel/css/owl.carousel.min.css')}}">
@@ -29,6 +30,10 @@
 	@include('client.blocks.preload')
 	@include('client.blocks.login')
 	@include('client.blocks.footer')
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="http://localhost:8080/Affilate/public/js/createcookie.js"></script>
+	@yield('script')
 	<script src="{{asset('public/client/js/action.js')}}"></script>
+	
 </body>
 </html>
