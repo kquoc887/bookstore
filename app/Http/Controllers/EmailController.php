@@ -11,8 +11,8 @@ use Cart,Auth;
 
 class EmailController extends Controller
 {
-	var $email;
-	var $username;
+	private $email;
+	private $username;
     public function postOrder(Request $request) {
     	
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -23,7 +23,7 @@ class EmailController extends Controller
     	foreach (Cart::content() as $row) {
     		$total += $row->qty * $row->price;
     	}
-    	echo $total;
+    	// echo $total;
     	$data = array(
     		'name' => $request->name,
     		'phone' => $request->phone,
@@ -55,6 +55,6 @@ class EmailController extends Controller
     		$message->to($this->email,$this->username)->subject('Thư thông báo đặt sách!');
     	});
 
-    	return redirect()->route('client.home');
+    	return view('client.pages.tkspage',['order'=>$order]);
     }
 }
