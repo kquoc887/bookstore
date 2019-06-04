@@ -31,7 +31,7 @@
 	@include('client.blocks.login')
 	@include('client.blocks.footer')
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="http://localhost:8080/Affilate/public/js/createcookie.js"></script>
+	<script src="http://localhost:7000/Affilate/public/js/createcookie.js"></script>
 	@yield('script')
 	<script src="{{asset('public/client/js/action.js')}}"></script>
 	
