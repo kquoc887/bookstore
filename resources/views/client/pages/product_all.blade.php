@@ -24,7 +24,7 @@
 						<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">
 							<div class="one_product">
 								<div class="pro-action">
-									<a class="cart-add">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a>
+									<a class="cart-add" href="">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a>
 								</div>
 								<img class="img-responsive" src="{{asset('public/admin/upload/images-book/' . $item->image)}}" alt="image1">
 								<div class="pro-detail">

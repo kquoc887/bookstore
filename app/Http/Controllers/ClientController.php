@@ -10,7 +10,6 @@ use App\User;
 use App\oderdetail;
 use Hash;
 use Illuminate\Support\Facades\Auth;
-use Validator;
 
 class ClientController extends Controller
 {
@@ -63,24 +62,6 @@ class ClientController extends Controller
     }
 
     public function postResgister(Request $request) {
-        $rules = [
-            'username_res' => 'required|min:3',
-            'pasword_res'  => 'required|min:6',
-            'email_res'    => 'required|email|unique:users,email',
-        ];
-        $message = [
-            'username_res.required' => 'Vui lòng nhập username',
-            'username_res.min' => 'Username có tối thiểu 3 ký tự',
-            'password_res.required' => 'Vui lòng nhập password',
-            'password_res.min' => 'Password có tối thiểu 6 ký tự',
-            'email_res.required'    => 'Vui lòng nhập email',
-            'email_res.email'    => 'Email chưa nhập đúng định dạng',     
-            'email_res.unique'  => 'Email đã tồn tại'               
-        ];
-        $validator = Validator::make($request->all(), $rules, $message);
-        if ($validator->fails())  {
-            return redirect()->route('client.getRegister')->withErrors($validator)->withInput($request->all());
-        }
         $user = new User();
         $user->username = $request->username_res;
         $user->email = $request->email_res;

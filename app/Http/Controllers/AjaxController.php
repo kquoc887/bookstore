@@ -40,7 +40,7 @@ class AjaxController extends Controller
     	if ($request->ajax()) {
     		$id = $request->get('id');
     		$book_add = book::find($id);
-    		Cart::add(array('id' => $id, 'name' => $book_add->name, 'qty' => $request->qty, 'price' => $book_add->price, 'options' => array('img' => $book_add->image)));
+    		Cart::add(array('id' => $id, 'name' => $book_add->name, 'qty' => 1, 'price' => $book_add->price, 'options' => array('img' => $book_add->image)));
     		$count = Cart::content()->count();
     		$array = array('status' => 'success', 'count' => $count);
     		echo json_encode($array);
@@ -51,7 +51,7 @@ class AjaxController extends Controller
         $user_all = User::all();
         $arr_username = array();
         foreach ($user_all as $key => $value) {
-            $arr_username[] = $value->username;
+               $arr_username[] = $value->username;
         }
         $errors = array();
         $result = false;

@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	
-	
 	var item = $('.owl-carousel div.item');
 	$('#owl-product').owlCarousel({
 		loop:true,
@@ -50,17 +48,17 @@ $(document).ready(function() {
 
 	$("a.cart").hover(function() {
 		$.ajax({
-			url:'http://localhost:7000/project_bookstore/client/ajax/getListCart',
+			url:'http://localhost/project_bookstore/client/ajax/getListCart',
 			type: 'get',
 			cache:false,
 			dataType:'json',
 			success: function(data, status) {
 				$('ul.cart-info').children().remove();
 				for (var i = 0; i < data.length; i++) {
-					var path = "http://localhost:7000/project_bookstore/public/admin/upload/images-book/" + data[i].options['img'];
+					var path = "http://localhost/project_bookstore/public/admin/upload/images-book/" + data[i].options['img'];
 					$('ul.cart-info').append('<li class="cart-item"><img class="img-cart" src="'+path +'"><p>'+data[i].name+'</p><p>'+data[i].qty+' x '+data[i].price+' VNĐ</p></li>');
 				}
-				$('ul.cart-info').append('<li class="cart-item"><a href="http://localhost:7000/project_bookstore/client/purchase/cart" class="btn btn-primary">Xem giỏ hàng</a</li>')
+				$('ul.cart-info').append('<li class="cart-item"><a href="http://localhost/project_bookstore/client/purchase/cart" class="btn btn-primary">Xem giỏ hàng</a</li>')
 
 				
 			},
@@ -89,18 +87,19 @@ $(document).ready(function() {
 		$(this).parents('.item-menu-level1').find('.item-menu-sub').toggle(1000);
 	});
 
-	$(document).on('click', 'button.watch-fast', function(event) {
+	$('button.watch-fast').click(function(event) {
+
 		var id_book = $(this).parent().find('.book-id').val();
 
 		$.ajax({
-			url: 'http://localhost:7000/project_bookstore/client/ajax/quickview',
+			url: 'http://localhost/project_bookstore/client/ajax/quickview',
 			type: 'get',
 			data: {
 				id: id_book
 			},
 			dataType: 'json', 
 			success: function(data, status) {
-				$('div.quickview img').attr('src', 'http://localhost:7000/project_bookstore/public/admin/upload/images-book/' + data.image);
+				$('div.quickview img').attr('src', 'http://localhost/project_bookstore/public/admin/upload/images-book/' + data.image);
 				$('div.quickview div.book-info .book-name').text(data.name);
 				$('div.quickview div.book-info .book-description').html(  data.description);
 				$('div.quickview div.book-info .book-price').text('Giá: ' + data.price);
@@ -112,8 +111,8 @@ $(document).ready(function() {
 				$('div.den').addClass('show-quickview');
 			}
 		});
+		
 	});
-
 
 	$('.btn-close, .den').click(function(event) {
 		$('div.quickview').removeClass('show-quickview');
@@ -142,18 +141,14 @@ $(document).ready(function() {
 		}
 	});
 
-
-	$(document).on('click', '.cart-add', function(event){
+	$('.cart-add').click(function(event) {
 		var id = $(this).parents('div.one_product').find('.book-id').val();
-		
-		var qty = $('.qty_value').val();
 		$.ajax({
-			url: 'http://localhost:7000/project_bookstore/client/ajax/addCartItem',
+			url: 'http://localhost/project_bookstore/client/ajax/addCartItem',
 			type: 'GET',
 			cache:false,
 			data: {
-				'id': id,
-				'qty': qty
+				'id': id
 			},
 			dataType: 'json',
 			success: function(data,status) {
@@ -163,54 +158,20 @@ $(document).ready(function() {
 			},
 			complete: function(jqXHR, textStatus) {
 				if(textStatus == 'success') {
-					$('.loader').delay(4).fadeOut('fast');
-					swal("Cảm ơn!", "Bạn đã thêm thành công 1 sản phẩm vào vỏ hàng", "success").then(() => {
-						location.reload(true);
-					});
-					
+					$('.loader').delay(1000).fadeOut('fast');
+					location.reload(true);
 				}
 			}
 
 		});
 	});
 
-
-	// $('.cart-add').click(function(event) {
-	// 	var id = $(this).parents('div.one_product').find('.book-id').val();
-	// 	var qty = $('.qty_value').val();
-	// 	$.ajax({
-	// 		url: 'http://localhost:7000/project_bookstore/client/ajax/addCartItem',
-	// 		type: 'GET',
-	// 		cache:false,
-	// 		data: {
-	// 			'id': id,
-	// 			'qty': qty
-	// 		},
-	// 		dataType: 'json',
-	// 		success: function(data,status) {
-	// 			if (data.status == 'success') {
-	// 				$('.loader').css('display', 'block');
-	// 			} 
-	// 		},
-	// 		complete: function(jqXHR, textStatus) {
-	// 			if(textStatus == 'success') {
-	// 				$('.loader').delay(5).fadeOut('fast');
-	// 				swal("Cảm ơn!", "Bạn đã thêm thành công 1 sản phẩm vào vỏ hàng", "success").then(() => {
-	// 					location.reload(true);
-	// 				});
-					
-	// 			}
-	// 		}
-
-	// 	});
-	// });
-
 	$('a.updateCart').click(function(event) {
 		var row_id = $(this).attr('id');
 		var quantity = $(this).parent().parent().find('.qty_value').val();
 		var token = $("input[name='_token']").val();
 		$.ajax({
-			url:'http://localhost:7000/project_bookstore/client/ajax/update-Cart/'+row_id+'/'+quantity,
+			url:'http://localhost/project_bookstore/client/ajax/update-Cart/'+row_id+'/'+quantity,
 			type: 'get',
 			cache: false,
 			data: {'token': token, 'quantity': quantity, 'row_id': row_id},
@@ -282,7 +243,7 @@ $(document).ready(function() {
 		var username = $('input[name=username]').val();
 		var password = $('input[name=password]').val();
 		$.ajax({
-			url: 'http://localhost:7000/project_bookstore/client/ajax/login-ajax' ,
+			url: 'http://localhost/project_bookstore/client/ajax/login-ajax' ,
 			type: 'GET',
 			cache: false,
 			dataType: 'json',
@@ -305,7 +266,7 @@ $(document).ready(function() {
 		var category_id = $(this).val();
 		console.log(category_id);
 		$.ajax({
-			url: 'http://localhost:7000/project_bookstore/client/ajax/ajax-book' ,
+			url: 'http://localhost/project_bookstore/client/ajax/ajax-book' ,
 			type: 'GET',
 			cache: false,
 			dataType: 'json',
@@ -314,20 +275,13 @@ $(document).ready(function() {
 				$('.dmuc_right').children().remove();
 				for (var i = 0; i< data.length; i++) {
 					var xhtml = '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">'
-					xhtml +='<div class="one_product"><div class="pro-action"><a class="cart-add">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a></div>';
-					xhtml += '<img class="img-responsive" src="http://localhost:7000/project_bookstore/public/admin/upload/images-book/' + data[i].image + '">';
-					xhtml += '<div class="pro-detail"><h3 class="pro-name"><a href="http://localhost:7000/project_bookstore/client/detail/' + data[i].id +'">'+data[i].name+'</a></h3>';
+					xhtml +='<div class="one_product"><div class="pro-action"><a class="cart-add" href="">+Thêm vào giỏ<i class="glyphicon glyphicon-shopping-cart"></i></a></div>';
+					xhtml += '<img class="img-responsive" src="http://localhost/project_bookstore/public/admin/upload/images-book/' + data[i].image + '">';
+					xhtml += '<div class="pro-detail"><h3 class="pro-name"><a href="http://localhost/project_bookstore/client/detail/' + data[i].id +'">'+data[i].name+'</a></h3>';
 					xhtml += '<div class="pro-price"><p><span>' + data[i].price + '</span></p><input type="hidden" class="book-id" value="'+data[i].id+'"><button class="btn btn-primary watch-fast" >Xem nhanh</button></div></div></div></div>';
 					$('.dmuc_right').append(xhtml);
 				}
 			}
 		});
 	});
-
-	$(document).on('click', '#take_an_order', function(event) {
-		event.preventDefault();
-		$('.loader').css('display', 'block');
-		$('#frmOrder').submit();
-	})
-
 });
