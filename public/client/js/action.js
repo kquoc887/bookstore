@@ -257,7 +257,6 @@ $(document).ready(function() {
 					$('#form-login-ajax').submit();
 				}
 				
-				// console.log(data);
 			}
 		});
 	});
@@ -284,4 +283,10 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$(document).on('click', '#take_an_order', function(event) {
+		event.preventDefault();
+		$('.loader').css('display', 'block');
+		$('#frmOrder').submit();
+	})
 });
