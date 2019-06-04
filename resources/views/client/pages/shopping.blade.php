@@ -59,7 +59,8 @@
 					?>			
 				</td>
 				<td>
-					<a class="btn btn-primary" href="{{route('client.purchase.checkout')}}">Thanh toán</a>
+					{{-- <button type="button" class="btn btn-primary" id="cash">Thanh toán</button> --}}
+					<a class="btn btn-primary" id="cash" href="{{route('client.purchase.checkout')}}">Thanh toán</a>
 				</td>
 			</tr>
 		</table>

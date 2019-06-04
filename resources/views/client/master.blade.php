@@ -29,6 +29,9 @@
 	@include('client.blocks.preload')
 	@include('client.blocks.login')
 	@include('client.blocks.footer')
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="{{asset('public/client/js/action.js')}}"></script>
+	<script src="http://localhost:7000/Affilate/public/js/createcookie.js"></script>
+	
 </body>
 </html>

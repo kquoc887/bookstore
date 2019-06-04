@@ -81,7 +81,7 @@
 									<span class="step_title_txt">Địa chỉ</span>
 							</h3>
 							<div class="@if (Auth::check()) info_user info_user_active @else info_user @endif">
-								<form action="{{route('client.email.order')}}" method="POST">
+								<form action="{{route('client.email.order')}}" id='frmOrder' method="POST">
 									<input type="hidden" name="_token" value="{{csrf_token()}}">
 									<div class="form-group">
 									    <label for="name">Họ và Tên:</label>
