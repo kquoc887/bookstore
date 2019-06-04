@@ -22,7 +22,7 @@
     var ord_id = $('#id-order').text();
        if (ord_id != '') {
             data_info = {
-                org_token: '8tHwHYuTXZ46In9BYsYcvSd6IUsqx5sC',
+                org_token: 'kDOYES4so7j114INT9jDNYiZ50IFFpW4',
                 order_id: $('#id-order').text(),
                 order_total: $('#order-total').text(),                        
             };
